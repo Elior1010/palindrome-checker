@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <!-- Link to Google Fonts for a custom font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <!-- Internal CSS for styling -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Custom font */
+            background-color: #f0f8ff; /* Light blue background color */
+            text-align: center; /* Center align the content */
+            padding: 50px; /* Padding around the content */
+        }
+        .result {
+            margin-top: 20px; /* Margin above the result text */
+        }
+    </style>
+</head>
+<body>
+    <!-- Title of the application -->
+    <h1>Palindrome Checker</h1>
+    <!-- Instructions for the user -->
+    <p>Enter a word or phrase below to check if it's a palindrome.</p>
+    <!-- The button that the user clicks to start the process -->
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+    <!-- Placeholder for displaying the result -->
+    <div class="result" id="result"></div>
+
+    <!-- JavaScript code to check for palindromes -->
+    <script>
+        function checkPalindrome() {
+            // Prompt the user to enter a string
+            let inputString = prompt("Enter a word or phrase:");
+            if (inputString !== null) {
+                // Remove spaces and convert to lowercase for comparison
+                let formattedString = inputString.replace(/\s+/g, '').toLowerCase();
+                // Check if the string is a palindrome
+                let isPalindrome = formattedString === formattedString.split('').reverse().join('');
+                // Display result to the user
+                document.getElementById('result').innerText = isPalindrome ?
+                    `"${inputString}" is a palindrome!` :
+                    `"${inputString}" is not a palindrome.`;
+                // Ask the user if they want to try again
+                if (confirm("Do you want to check another word?")) {
+                    checkPalindrome(); // Recursive call to start over
+                }
+            }
+        }
+    </script>
+</body>
+</html>
